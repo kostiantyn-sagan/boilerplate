@@ -15,6 +15,18 @@ import { Button, MyButton, Spinner } from '../../elements';
 
 // Styles
 import { Container, Header } from './styles';
+import SelfEducation from '../../components/SelfEducation';
+
+// Global styles for SelfEducation
+
+import styled, { createGlobalStyle } from 'styled-components';
+
+const Global = createGlobalStyle`
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}`;
 
 const Main: FC = () => {
     const [ text, setText ] = useState<string>('');
@@ -79,6 +91,9 @@ const Main: FC = () => {
                     ))
                 }
             </main>
+
+            <Global/>
+            <SelfEducation/>
         </Container>
     );
 };
