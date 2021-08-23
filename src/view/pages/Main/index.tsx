@@ -11,7 +11,7 @@ import { useTodosQuery, useTodosMutations } from '../../../bus/todos';
 import { useTogglersRedux } from '../../../bus/client/togglers';
 
 // Elements
-import { Button, Spinner } from '../../elements';
+import { Button, MyButton, Spinner } from '../../elements';
 
 // Styles
 import { Container, Header } from './styles';
@@ -44,6 +44,17 @@ const Main: FC = () => {
                     onChange = { (event) => void setText(event.target.value) }
                 />
                 <nav>
+                    <MyButton
+                        primary
+                        href = 'https://github.com/styled-components/styled-components'
+                        rel = 'noopener'
+                        target = '_blank'>GitHub
+                    </MyButton>
+
+                    <MyButton
+                        href = 'https://styled-components.com/docs'>Documentation
+                    </MyButton>
+
                     <Button
                         disabled = { !isOnline }
                         title = 'Create TODO'
