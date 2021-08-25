@@ -6,4 +6,3 @@ export * from './AdaptiveScroll';
 
 // My element Button
 
-export * from './my-elements/MyButton';

@@ -4,6 +4,7 @@ import { Switch, Route, Redirect, useHistory, useLocation } from 'react-router-d
 
 // Pages
 import { Main } from '../../pages';
+import SelfEducation from '../../pages/SelfEduction';
 
 export const Private: FC = () => {
     const { push } = useHistory();
@@ -22,6 +23,7 @@ export const Private: FC = () => {
                 path = '/'>
                 <Main />
             </Route>
+            <Route path = '/self-education'><SelfEducation/></Route>
             <Redirect to = '/form' />
         </Switch>
     );

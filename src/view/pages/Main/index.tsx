@@ -1,5 +1,6 @@
 // Core
 import React, { FC, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import { ErrorBoundary, Todo } from '../../components';
@@ -11,15 +12,14 @@ import { useTodosQuery, useTodosMutations } from '../../../bus/todos';
 import { useTogglersRedux } from '../../../bus/client/togglers';
 
 // Elements
-import { Button, MyButton, Spinner } from '../../elements';
+import { Button, Spinner } from '../../elements';
 
 // Styles
 import { Container, Header } from './styles';
-import SelfEducation from '../../components/SelfEducation';
 
 // Global styles for SelfEducation
 
-import styled, { createGlobalStyle } from 'styled-components';
+import  { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
 * {
@@ -56,16 +56,7 @@ const Main: FC = () => {
                     onChange = { (event) => void setText(event.target.value) }
                 />
                 <nav>
-                    <MyButton
-                        primary
-                        href = 'https://github.com/styled-components/styled-components'
-                        rel = 'noopener'
-                        target = '_blank'>GitHub
-                    </MyButton>
 
-                    <MyButton
-                        href = 'https://styled-components.com/docs'>Documentation
-                    </MyButton>
 
                     <Button
                         disabled = { !isOnline }
@@ -73,6 +64,7 @@ const Main: FC = () => {
                         onClick = { onCreate }>
                         CREATE
                     </Button>
+                    <Link to = '/self-education'>Self-education</Link>
                 </nav>
             </Header>
             <main>
@@ -93,7 +85,6 @@ const Main: FC = () => {
             </main>
 
             <Global/>
-            <SelfEducation/>
         </Container>
     );
 };

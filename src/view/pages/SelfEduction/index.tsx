@@ -6,7 +6,7 @@ import Title from './components/Title';
 import Button from './components/Button';
 
 const AppWrapper = styled.div`
-    width: 100%;
+    /* width: 100%; */
     min-height: 100vh;
     padding: 2rem;
     background: black;
@@ -19,12 +19,14 @@ const SelfEducation = () => {
             <Flex justify = 'center' >
                 <Title color = { 'teal' }>Console cmd 2021. Ulbi TV</Title>
             </Flex>
-            <Flex direction = 'column'>
-                <Console/>
+            <Flex
+                direction = 'column'
+                margin = { '10px 0' }>
+                <Console color = 'teal'/>
                 <Button
-                    primary
                     align = 'flex-end'
-                    color = { 'red' }>Отправить
+                    color = 'teal'>
+                    Отправить
                 </Button>
             </Flex>;
         </AppWrapper>
@@ -32,3 +34,4 @@ const SelfEducation = () => {
 };
 
 export default SelfEducation;
+
