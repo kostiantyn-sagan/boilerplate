@@ -9,7 +9,16 @@ const rotateAnimation = keyframes`
     transform: rotateZ(360deg);
 }`;
 
-const StyledButton = styled.button.attrs((props) => ({ outlined: true }))`
+type PropTypes = {
+    children: string;
+    align?: string;
+    primary?: boolean;
+    color?: string;
+    background?: string;
+    outlined?: boolean;
+}
+
+const StyledButton = styled.button.attrs(() => ({ outlined: true }))`
 border: none;
 padding: 10px 15px;
 font-size:18px;
@@ -35,20 +44,10 @@ background: transparent;
 `
 }`;
 
-const LargeButton = styled(StyledButton)`font-size: 32px;`;
+// const LargeButton = styled(StyledButton)`font-size: 32px;`;
 
 
-type PropTypes = {
-    children: string;
-    align?: string;
-    primary?: boolean;
-    color?: string;
-    background?: string;
-    outlined?: boolean;
-}
-
-const Button:FC<PropTypes> = (props) => {
+export const ButtonSE:FC<PropTypes> = (props) => {
     return <StyledButton { ...props }/>;
 };
 
-export default Button;

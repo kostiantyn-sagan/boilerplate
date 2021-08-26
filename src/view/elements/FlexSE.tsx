@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 type PropTypes = {
-    // children: ReactNode;
     direction?: string;
     align?: string;
     justify?: string;
@@ -20,7 +18,7 @@ flex-direction: ${({ customStyles }) => customStyles.direction || 'row'};
  `;
 
 
-const Flex:FC<PropTypes> = ({ children, ...props }) => {
+export const Flex:FC<PropTypes> = ({ children, ...props }) => {
     return (
         <StyledFlex
             children = { children }
@@ -28,6 +26,4 @@ const Flex:FC<PropTypes> = ({ children, ...props }) => {
         />
     );
 };
-
-export default Flex;
 

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import Flex from './Flex';
-import Line from './Line';
+import { Flex } from '../../elements';
+import Line from '../../elements/LineSE';
 
 const StyledConsole = styled.textarea`
 width: 100%;
@@ -10,21 +10,28 @@ background: black;
 font-size: 24px;
 border: none;
 resize: none;
-color: ${({ color }) => color || 'white'};
+color: ${(props:any) => props.color || props.theme.colors.primary};
 &:focus {
     outline: none;
+}
+
+@media ${(props:any) => props.theme.media.phone} {
+    border: 1px solid tomato;
+}
+
+@media ${(props:any) => props.theme.media.tablet} {
+    border: 1px solid teal;
 }`;
 
 type PropTypes = {
     color?: string;
 }
 
-const Console:FC<PropTypes> = ({ color, ...props }) => {
+export const Console:FC<PropTypes> = ({ color, ...props }) => {
     const [{ lines }, setlines ] = useState({ lines: [ 'C/users/qwewe>' ]});
 
     const onKeyPress = (event:React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
-            console.log(event.key);
             setlines(({ lines }) => ({ lines: [ ...lines, 'C/users/qwewe>' ]}));
         }
     };
@@ -49,4 +56,3 @@ const Console:FC<PropTypes> = ({ color, ...props }) => {
     );
 };
 
-export default Console;

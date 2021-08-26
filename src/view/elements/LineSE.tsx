@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledLine = styled.div`
 font-size: 24px;
-color: ${(props) => props.color || 'white'}`;
+color: ${(props:any) => props.color || props.theme.colors.primary}`;
 
 type PropTypes = {
     color?: string;

@@ -1,6 +1,5 @@
 // Core
 import React, { FC, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
 import { ErrorBoundary, Todo } from '../../components';
@@ -17,16 +16,6 @@ import { Button, Spinner } from '../../elements';
 // Styles
 import { Container, Header } from './styles';
 
-// Global styles for SelfEducation
-
-import  { createGlobalStyle } from 'styled-components';
-
-const Global = createGlobalStyle`
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}`;
 
 const Main: FC = () => {
     const [ text, setText ] = useState<string>('');
@@ -64,7 +53,6 @@ const Main: FC = () => {
                         onClick = { onCreate }>
                         CREATE
                     </Button>
-                    <Link to = '/self-education'>Self-education</Link>
                 </nav>
             </Header>
             <main>
@@ -84,7 +72,6 @@ const Main: FC = () => {
                 }
             </main>
 
-            <Global/>
         </Container>
     );
 };

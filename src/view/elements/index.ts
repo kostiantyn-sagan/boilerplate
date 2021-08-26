@@ -4,5 +4,9 @@ export * from './Textarea';
 export * from './Spinner';
 export * from './AdaptiveScroll';
 
-// My element Button
+// self-education elements
 
+export * from './ButtonLinkSE';
+export * from './FlexSE';
+export * from './TitleSE';
+export * from './ButtonSE';

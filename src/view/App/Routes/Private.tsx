@@ -28,3 +28,4 @@ export const Private: FC = () => {
         </Switch>
     );
 };
+
