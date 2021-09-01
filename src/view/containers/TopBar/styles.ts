@@ -31,3 +31,11 @@ export const Logo = styled.img`
         opacity: 0.9;
     } 
 `;
+
+export const SelfEducationLink = styled.div`
+    font-family: sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.19;
+    color: #fff;
+`;
