@@ -9,8 +9,10 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import { Main } from '../../pages';
-import SelfEducation from '../../pages/SelfEduction';
+import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05 } from '../../pages';
+
+// Components
+import { StudentRegistration } from '../../components';
 
 export const Private: FC = () => {
     const { push } = useHistory();
@@ -29,8 +31,30 @@ export const Private: FC = () => {
                 path = '/'>
                 <Main />
             </Route>
-            <Route path = '/self-education'>
+            <Route
+                exact
+                path = '/self-education'>
                 <SelfEducation />
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-01'>
+                <ReactHw01 />
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-02'>
+                <ReactHw02 />
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-03'>
+                <ReactHw03 />
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-04'>
+                <ReactHw04 />
+            </Route>
+            <Route
+                exact
+                path = '/self-education/lectrum-react-hw-05'>
+                <ReactHw05 />
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-05/registration'>
+                <StudentRegistration onSubmit = { (x:any) => console.log(x) }/>
             </Route>
             <Redirect to = '/form' />
         </Switch>

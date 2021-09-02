@@ -3,3 +3,4 @@ export * from './Modal';
 export * from './Todo';
 export * from './ConsoleSE';
 export * from './HwList';
+export * from './StudentRegistration';

@@ -4,14 +4,17 @@ import React from 'react';
 // Components
 import { Hwlist } from '../../components';
 
+// Elements
+import { Section, Container, SectionTitle } from '../../elements';
+
 const SelfEducation = () => {
     return (
-        <section>
-            <div>
-                <h2>lectrum-react</h2>
+        <Section>
+            <Container>
+                <SectionTitle>lectrum-react</SectionTitle>
                 <Hwlist/>
-            </div>
-        </section>
+            </Container>
+        </Section>
     );
 };
 
