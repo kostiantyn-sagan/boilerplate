@@ -3,62 +3,126 @@ import React, { FC } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
+// Elements
+import { FormLabel } from '../../elements';
+
 interface FormikProps {
     email?: string;
     onSubmit?: any;
 }
 
 const validationSchema = Yup.object({
+    firstName: Yup.string().required('Required'),
+    surname:   Yup.string().required('Required'),
+    age:       Yup.number().positive()
+        .integer()
+        .min(7, 'You are under 7 years old')
+        .max(59, 'You are over 59 years old'),
     email: Yup.string().email('Invalid email address')
         .required('Required'),
-    password: Yup.string()
-        .min(6, 'Минимум 6 символов')
-        .max(20, 'Максимум 20 символов')
-        .required('Обязательное поле'),
+    sex: Yup.string().oneOf([ 'Male', 'Female' ])
+        .required('Required'),
+    speciality: Yup.string().oneOf([ 'designer', 'developer', 'writer' ])
+        .required('Required'),
 });
 
 export const StudentRegistration: FC<FormikProps> = ({ onSubmit }) => {
     return (
         <Formik
-            initialValues = {{ firstName: '', surname: '', age: null, email: '', sex: null, password: '' }}
+            initialValues = {{ firstName: '', surname: '', age: '', email: '', sex: '', speciality: '' }}
             validationSchema = { validationSchema }
             onSubmit = { (values, { setSubmitting }) => {
-                console.log(values);
                 onSubmit(values);
                 setSubmitting(false);
             } }>
-            <Form autoComplete = 'off'>
-                <Field
-                    name = 'firstName'
-                    type = 'text'
-                />
-                <Field
-                    name = 'surname'
-                    type = 'text'
-                />
-                <Field
-                    name = 'age'
-                    type = 'number'
-                />
-                <Field
-                    name = 'email'
-                    type = 'email'
-                />
-                <ErrorMessage name = 'email'/>
-                <Field
-                    name = 'sex'
-                    type = 'email'
-                />
-                <Field
-                    name = 'password'
-                    type = 'password'
-                />
-                <ErrorMessage name = 'password'/>
-                <button
-                    type = 'submit'>
-                    Submit
-                </button>
-            </Form>
+            {({ errors }) => (
+                <Form
+                    autoComplete = 'off'
+                    style = {{
+                        padding:      '10px',
+                        border:       '1px solid #2196f3',
+                        borderRadius: '4px',
+                    }}>
+                    <FormLabel  error = { !!errors.firstName }>
+                        First Name
+                        <Field
+                            name = 'firstName'
+                            style = {
+                                errors.firstName ? { display: 'block', border: '1px solid red' } : { display: 'block' } }
+                            type = 'text'
+                        />
+                    </FormLabel>
+                    <ErrorMessage name = 'firstName'/>
+                    <FormLabel error = { !!errors.surname }>
+                        Surname
+                        <Field
+                            name = 'surname'
+                            style = { errors.surname ? { display: 'block', border: '1px solid red' } : { display: 'block' } }
+                            type = 'text'
+                        />
+                    </FormLabel>
+                    <ErrorMessage name = 'surname'/>
+                    <FormLabel error = { !!errors.age }>
+                        Age
+                        <Field
+                            name = 'age'
+                            style = { errors.age ? { display: 'block', border: '1px solid red' } : { display: 'block' } }
+                            type = 'number'
+                        />
+                    </FormLabel>
+                    <ErrorMessage name = 'age'/>
+                    <FormLabel error = { !!errors.email }>
+                        Email Address
+                        <Field
+                            name = 'email'
+                            style = { errors.email ? { display: 'block', border: '1px solid red' } : { display: 'block' } }
+                            type = 'email'
+                        />
+                    </FormLabel>
+                    <ErrorMessage name = 'email'/>
+                    <div
+                        id = 'my-radio-group'>Sex
+                    </div>
+                    <div
+                        aria-labelledby = 'my-radio-group'
+                        role = 'group'>
+                        <FormLabel error = { !!errors.sex }>
+                            <Field
+                                name = 'sex'
+                                type = 'radio'
+                                value = 'Male'
+                            />
+                            Male
+                        </FormLabel>
+                        <FormLabel error = { !!errors.sex }>
+                            <Field
+                                name = 'sex'
+                                type = 'radio'
+                                value = 'Female'
+                            />
+                            Female
+                        </FormLabel>
+                    </div>
+                    <ErrorMessage name = 'sex'/>
+                    <FormLabel error = { !!errors.speciality }>
+                        Speciality
+                        <Field
+                            as = 'select'
+                            name = 'speciality'
+                            style = { errors.speciality ? { display: 'block', border: '1px solid red' } : { display: 'block' } }>
+                            <option value = 'designer'>Designer</option>
+                            <option value = 'developer'>Developer</option>
+                            <option value = 'writer'>Writer</option>
+                        </Field>
+                    </FormLabel>
+                    <ErrorMessage name = 'speciality'/>
+                    <button
+                        type = 'submit'>
+                        Submit
+                    </button>
+                </Form>
+            )}
         </Formik>
     );
 };
+

@@ -16,3 +16,4 @@ export * from './SectionTitle';
 export * from './Container';
 export * from './Section';
 export * from './SignUpLink';
+export * from './FormLabel';

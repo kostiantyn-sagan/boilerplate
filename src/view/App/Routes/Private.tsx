@@ -14,6 +14,9 @@ import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactH
 // Components
 import { StudentRegistration } from '../../components';
 
+// Elements
+import { Section, Container } from '../../elements';
+
 export const Private: FC = () => {
     const { push } = useHistory();
     const { pathname } = useLocation();
@@ -54,7 +57,11 @@ export const Private: FC = () => {
                 <ReactHw05 />
             </Route>
             <Route path = '/self-education/lectrum-react-hw-05/registration'>
-                <StudentRegistration onSubmit = { (x:any) => console.log(x) }/>
+                <Section>
+                    <Container style = {{ fontFamily: 'sans-serif', maxWidth: '500px' }}>
+                        <StudentRegistration onSubmit = { (x:any) => console.log(x) }/>
+                    </Container>
+                </Section>
             </Route>
             <Redirect to = '/form' />
         </Switch>
