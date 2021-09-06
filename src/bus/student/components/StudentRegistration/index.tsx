@@ -4,7 +4,10 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 // Elements
-import { FormLabel } from '../../elements';
+import { FormLabel } from '../../../../view/elements';
+
+// Hooks
+import { useStudent } from '../../hooks/useStudent';
 
 interface FormikProps {
     email?: string;
@@ -26,15 +29,18 @@ const validationSchema = Yup.object({
         .required('Required'),
 });
 
-export const StudentRegistration: FC<FormikProps> = ({ onSubmit }) => {
+export const StudentRegistration: FC<FormikProps> = () => {
+    const { fillStudent } = useStudent();
+
     return (
         <Formik
             initialValues = {{ firstName: '', surname: '', age: '', email: '', sex: '', speciality: '' }}
             validationSchema = { validationSchema }
-            onSubmit = { (values, { setSubmitting }) => {
-                onSubmit(values);
-                setSubmitting(false);
-            } }>
+            // onSubmit = { (values, { setSubmitting }) => {
+            //     onSubmit(values);
+            //     setSubmitting(false);
+            // } }
+            onSubmit = { fillStudent }>
             {({ errors }) => (
                 <Form
                     autoComplete = 'off'

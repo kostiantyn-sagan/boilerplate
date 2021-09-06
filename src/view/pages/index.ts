@@ -8,3 +8,4 @@ export const ReactHw02 = lazy(() => import(/* webpackChunkName: "Main" */ './Rea
 export const ReactHw03 = lazy(() => import(/* webpackChunkName: "Main" */ './ReactHw03'));
 export const ReactHw04 = lazy(() => import(/* webpackChunkName: "Main" */ './ReactHw04'));
 export const ReactHw05 = lazy(() => import(/* webpackChunkName: "Main" */ './ReactHw05'));
+export const ReactHw06 = lazy(() => import(/* webpackChunkName: "Main" */ './ReactHw06'));

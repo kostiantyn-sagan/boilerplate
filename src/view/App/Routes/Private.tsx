@@ -9,10 +9,10 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05 } from '../../pages';
+import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06 } from '../../pages';
 
 // Components
-import { StudentRegistration } from '../../components';
+import { StudentRegistration } from '../../../bus/student/components/StudentRegistration';
 
 // Elements
 import { Section, Container } from '../../elements';
@@ -62,6 +62,9 @@ export const Private: FC = () => {
                         <StudentRegistration onSubmit = { (x:any) => console.log(x) }/>
                     </Container>
                 </Section>
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-06/registration'>
+                <ReactHw06/>
             </Route>
             <Redirect to = '/form' />
         </Switch>

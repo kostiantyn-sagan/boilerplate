@@ -29,6 +29,9 @@ export const Hwlist = () => {
             <HwItem>
                 <HwLink to = '/self-education/lectrum-react-hw-05'>hw-05</HwLink>
             </HwItem>
+            <HwItem>
+                <HwLink to = '/self-education/lectrum-react-hw-06/registration'>hw-06</HwLink>
+            </HwItem>
         </StyledHwList>
     );
 };
