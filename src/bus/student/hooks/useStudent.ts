@@ -14,7 +14,7 @@ export const useStudent = () => {
     };
 
     return {
-        user: data,
+        student: data,
         fillStudent,
     };
 };

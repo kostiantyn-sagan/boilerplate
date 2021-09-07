@@ -12,7 +12,8 @@ import {
 import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06 } from '../../pages';
 
 // Components
-import { StudentRegistration } from '../../../bus/student/components/StudentRegistration';
+import { RegistrationForm } from '../../../bus/student/components/RegistrationForm';
+import { Profile } from '../../../bus/student';
 
 // Elements
 import { Section, Container } from '../../elements';
@@ -59,12 +60,15 @@ export const Private: FC = () => {
             <Route path = '/self-education/lectrum-react-hw-05/registration'>
                 <Section>
                     <Container style = {{ fontFamily: 'sans-serif', maxWidth: '500px' }}>
-                        <StudentRegistration onSubmit = { (x:any) => console.log(x) }/>
+                        <RegistrationForm onSubmit = { (x:any) => console.log(x) }/>
                     </Container>
                 </Section>
             </Route>
             <Route path = '/self-education/lectrum-react-hw-06/registration'>
                 <ReactHw06/>
+            </Route>
+            <Route path = '/self-education/lectrum-react-hw-06/student'>
+                <Profile/>
             </Route>
             <Redirect to = '/form' />
         </Switch>

@@ -29,7 +29,7 @@ const validationSchema = Yup.object({
         .required('Required'),
 });
 
-export const StudentRegistration: FC<FormikProps> = () => {
+export const RegistrationForm: FC<FormikProps> = () => {
     const { fillStudent } = useStudent();
 
     return (

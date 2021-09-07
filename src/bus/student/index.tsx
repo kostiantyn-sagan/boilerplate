@@ -8,7 +8,7 @@ import { Section, Container } from '../../view/elements';
 import { useStudent } from './hooks/useStudent';
 
 export const Profile  = () => {
-    const student = useStudent();
+    const { student }:any = useStudent();
 
     const profileJSX = student && (
         <>
