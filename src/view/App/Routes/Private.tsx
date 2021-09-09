@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06 } from '../../pages';
+import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06, ReactHw07 } from '../../pages';
 
 // Components
 import { RegistrationForm } from '../../../bus/student/components/RegistrationForm';
@@ -30,11 +30,11 @@ export const Private: FC = () => {
 
     return (
         <Switch>
-            <Route
+            {/* <Route
                 exact
                 path = '/'>
                 <Main />
-            </Route>
+            </Route> */}
             <Route
                 exact
                 path = '/self-education'>
@@ -70,7 +70,10 @@ export const Private: FC = () => {
             <Route path = '/self-education/lectrum-react-hw-06/student'>
                 <Profile/>
             </Route>
-            <Redirect to = '/form' />
+            <Route path = '/self-education/lectrum-react-hw-07'>
+                <ReactHw07/>
+            </Route>
+            <Redirect to = '/self-education' />
         </Switch>
     );
 };

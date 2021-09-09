@@ -7,10 +7,11 @@ import { RegistrationForm } from '../../../bus/student/components/RegistrationFo
 // Elements
 import { Section, Container, HwLink } from '../../elements';
 
-const ReactHw06 = () => {
+const ReactHw07 = () => {
     return (
         <Section>
-            <Container style = {{ fontFamily: 'sans-serif', maxWidth: '500px' }}>
+            <Container>
+                <h1>This is page hw-07</h1>
                 <RegistrationForm/>
                 <HwLink
                     style = {{ width: '174px', height: '80px', marginTop: '10px', marginLeft: 'auto', marginRight: 'auto' }}
@@ -22,4 +23,4 @@ const ReactHw06 = () => {
     );
 };
 
-export default ReactHw06;
+export default ReactHw07;

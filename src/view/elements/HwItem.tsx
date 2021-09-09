@@ -8,7 +8,7 @@ interface Props  {
 
 // Styles
 const Styled = styled.li`
-    width: calc((100% - 150px) / 6);
+    width: calc((100% - 150px) / 7);
 `;
 
 export const HwItem: FC<Props> = ({ children }) => {

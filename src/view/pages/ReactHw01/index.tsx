@@ -2,14 +2,18 @@
 import React from 'react';
 
 // Components
-import {  } from '../../components';
+import { News } from '../../components';
 
 // Elements
-import {  } from '../../elements';
+import { Section, Container } from '../../elements';
 
 const ReactHw01 = () => {
     return (
-        <h1>This is page hw-01</h1>
+        <Section>
+            <Container>
+                <News/>
+            </Container>
+        </Section>
     );
 };
 

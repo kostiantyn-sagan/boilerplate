@@ -1,5 +1,4 @@
 import { Reducer } from 'redux';
-
 import { types } from './types';
 
 const initialState = {

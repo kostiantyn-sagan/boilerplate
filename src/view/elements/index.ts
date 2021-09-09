@@ -17,3 +17,6 @@ export * from './Container';
 export * from './Section';
 export * from './SignUpLink';
 export * from './FormLabel';
+export * from './Tag';
+export * from './CommentsCounter';
+export * from './LikesCounter';

@@ -2,14 +2,23 @@
 import React from 'react';
 
 // Components
-import {  } from '../../components';
+import { News, Accordion } from '../../components';
 
 // Elements
-import {  } from '../../elements';
+import { Section, Container } from '../../elements';
+
+// Data
+import newsData from '../../../api/sourceHw2.json';
+import accordionData from '../../../api/accordionData.json';
 
 const ReactHw02 = () => {
     return (
-        <h1>This is page hw-02</h1>
+        <Section>
+            <Container>
+                <News source = { newsData }/>
+                <Accordion source = { accordionData }/>
+            </Container>
+        </Section>
     );
 };
 
