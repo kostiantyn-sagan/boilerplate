@@ -10,6 +10,7 @@ const StyledNews = styled.section`
   display: flex;
   padding: 0;
   margin: 0;
+  margin-bottom: 30px;
 `;
 
 type PropTypes = {

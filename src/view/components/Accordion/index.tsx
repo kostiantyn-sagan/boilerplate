@@ -26,15 +26,14 @@ export const Accordion:FC<PropTypes> = ({ source, title = 'Accordion' }) => {
         <StyledAccordion>
             <AccordionTitle>{title}</AccordionTitle>
             {source.map(({ question, answer }:any, idx:any) => (
-                <AccotdionItem
-                    key = { idx }
-                    selected = { selected && selectedIdx === idx }>
+                <AccotdionItem key = { idx }>
                     <AccordionQuestion
                         selected = { selected && selectedIdx === idx }
                         onClick = { () => toggle(idx) }>
                         <span>{`${idx + 1}. ${question}`}</span>
                     </AccordionQuestion>
-                    <AccordionAnswer selected = { selected && selectedIdx === idx }>{answer}</AccordionAnswer>
+                    {selected && selectedIdx === idx
+                    && <AccordionAnswer selected = { selected && selectedIdx === idx }>{answer}</AccordionAnswer>}
                 </AccotdionItem>
             ))}
         </StyledAccordion>

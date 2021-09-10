@@ -20,3 +20,6 @@ export * from './FormLabel';
 export * from './Tag';
 export * from './CommentsCounter';
 export * from './LikesCounter';
+export * from './ImageGalleryItem';
+export * from './ContactEmail';
+export * from './SecretRouter';

@@ -10,29 +10,16 @@ export const AccordionTitle = styled.h1`
   text-transform: capitalize;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 22px;
+  font-weight: 700;
 `;
 
-export const AccotdionItem = styled.div<{selected?: boolean}>`
+export const AccotdionItem = styled.div`
   margin-bottom: 10px;
 
   &:hover:first-child {
     color: #000;
  }
-
- ${(props) => props.selected && css`
-  &:first-child {
-    cursor: initial;
-    color: #4886ff;
-
-    &::after {
-      content: '-';
-    }
-   }
-
-  &:last-child {
-    display: inline-block;
-  }
-  `};
 `;
 
 export const AccordionQuestion = styled.div<{selected?: boolean}>`

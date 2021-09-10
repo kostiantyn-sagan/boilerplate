@@ -5,11 +5,16 @@ import React from 'react';
 import {  } from '../../components';
 
 // Elements
-import {  } from '../../elements';
+import { Section, Container, SignUpLink } from '../../elements';
 
 const ReactHw04 = () => {
     return (
-        <h1>This is page hw-04</h1>
+        <Section>
+            <Container>
+                <SignUpLink to = '/self-education/lectrum-react-hw-04/contacts'>contats page</SignUpLink>
+                <SignUpLink to = '/self-education/lectrum-react-hw-04/secret'>secret page</SignUpLink>
+            </Container>
+        </Section>
     );
 };
 

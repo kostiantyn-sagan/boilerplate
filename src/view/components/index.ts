@@ -6,3 +6,5 @@ export * from './HwList';
 export * from './News';
 export * from './Article';
 export * from './Accordion';
+export * from './ImageGallery';
+export * from './Guardian';

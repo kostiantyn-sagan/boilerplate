@@ -9,14 +9,18 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import { Main, SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06, ReactHw07 } from '../../pages';
+import { SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06, ReactHw07 } from '../../pages';
 
 // Components
 import { RegistrationForm } from '../../../bus/student/components/RegistrationForm';
 import { Profile } from '../../../bus/student';
+import { Guardian } from '../../components';
 
 // Elements
-import { Section, Container } from '../../elements';
+import { Section, Container, ContactsEmail, SecretRouter } from '../../elements';
+
+// Book
+import { book } from './book';
 
 export const Private: FC = () => {
     const { push } = useHistory();
@@ -37,43 +41,61 @@ export const Private: FC = () => {
             </Route> */}
             <Route
                 exact
-                path = '/self-education'>
+                path = { book.root }>
                 <SelfEducation />
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-01'>
+            <Route path = { `${book.root}/lectrum-react-hw-01` }>
                 <ReactHw01 />
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-02'>
+            <Route path = { `${book.root}/lectrum-react-hw-02` }>
                 <ReactHw02 />
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-03'>
+            <Route path = { `${book.root}/lectrum-react-hw-03` }>
                 <ReactHw03 />
-            </Route>
-            <Route path = '/self-education/lectrum-react-hw-04'>
-                <ReactHw04 />
             </Route>
             <Route
                 exact
-                path = '/self-education/lectrum-react-hw-05'>
+                path = { `${book.root}/lectrum-react-hw-04` }>
+                <ReactHw04 />
+            </Route>
+            <Route path = { `${book.root}/lectrum-react-hw-04${book.contacts}` }>
+                <Section>
+                    <Container>
+                        <ContactsEmail/>
+                    </Container>
+                </Section>
+            </Route>
+            <Route
+                exact
+                path = { `${book.root}/lectrum-react-hw-05` }>
                 <ReactHw05 />
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-05/registration'>
+            <Route path = { `${book.root}/lectrum-react-hw-05/registration` }>
                 <Section>
                     <Container style = {{ fontFamily: 'sans-serif', maxWidth: '500px' }}>
                         <RegistrationForm onSubmit = { (x:any) => console.log(x) }/>
                     </Container>
                 </Section>
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-06/registration'>
+            <Route path = { `${book.root}/lectrum-react-hw-06/registration` }>
                 <ReactHw06/>
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-06/student'>
+            <Route path = { `${book.root}/lectrum-react-hw-06/student` }>
                 <Profile/>
             </Route>
-            <Route path = '/self-education/lectrum-react-hw-07'>
+            <Route path = { `${book.root}/lectrum-react-hw-07` }>
                 <ReactHw07/>
             </Route>
-            <Redirect to = '/self-education' />
+            <Guardian>
+                <Route path = { `${book.root}/lectrum-react-hw-04${book.secret}` }>
+                    <Section>
+                        <Container>
+                            <SecretRouter/>
+                        </Container>
+                    </Section>
+                </Route>
+            </Guardian>
+            <Redirect to = { book.root }/>
         </Switch>
     );
 };
