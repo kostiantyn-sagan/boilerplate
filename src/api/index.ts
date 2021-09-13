@@ -3,8 +3,10 @@ import { root } from './config';
 
 export const api = Object.freeze({
     people: {
-        fetch: () =>{
-            return fetch(`${root}/people`, {
+        fetch: (id?:string) => {
+            const url = id ? `${root}/people/${id}` : `${root}/people`;
+
+            return fetch(url, {
                 method: 'GET',
             });
         },

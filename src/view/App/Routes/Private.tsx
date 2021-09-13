@@ -11,10 +11,15 @@ import {
 // Pages
 import { SelfEducation, ReactHw01, ReactHw02, ReactHw03, ReactHw04, ReactHw05, ReactHw06, ReactHw07 } from '../../pages';
 
+// Bus
+import { People } from '../../../bus/people';
+import { Films } from '../../../bus/films';
+
 // Components
 import { RegistrationForm } from '../../../bus/student/components/RegistrationForm';
 import { Profile } from '../../../bus/student';
 import { Guardian } from '../../components';
+import { Person } from '../../../bus/people/components/Person';
 
 // Elements
 import { Section, Container, ContactsEmail, SecretRouter } from '../../elements';
@@ -70,21 +75,38 @@ export const Private: FC = () => {
                 path = { `${book.root}/lectrum-react-hw-05` }>
                 <ReactHw05 />
             </Route>
-            <Route path = { `${book.root}/lectrum-react-hw-05/registration` }>
+            <Route path = { `${book.root}/lectrum-react-hw-05${book.registration}` }>
                 <Section>
                     <Container style = {{ fontFamily: 'sans-serif', maxWidth: '500px' }}>
                         <RegistrationForm onSubmit = { (x:any) => console.log(x) }/>
                     </Container>
                 </Section>
             </Route>
-            <Route path = { `${book.root}/lectrum-react-hw-06/registration` }>
+            <Route path = { `${book.root}/lectrum-react-hw-06${book.registration}` }>
                 <ReactHw06/>
             </Route>
-            <Route path = { `${book.root}/lectrum-react-hw-06/student` }>
+            <Route path = { `${book.root}/lectrum-react-hw-06${book.student}` }>
                 <Profile/>
             </Route>
-            <Route path = { `${book.root}/lectrum-react-hw-07` }>
+            <Route
+                exact
+                path = { `${book.root}/lectrum-react-hw-07` }>
                 <ReactHw07/>
+            </Route>
+            <Route
+                exact
+                path = { `${book.root}/lectrum-react-hw-07${book.people}` }>
+                <Section>
+                    <Container>
+                        <People/>
+                    </Container>
+                </Section>
+            </Route>
+            <Route path = { `${book.root}/lectrum-react-hw-07${book.person}` }>
+                <Person/>
+            </Route>
+            <Route path = { `${book.root}/lectrum-react-hw-07${book.films}` }>
+                <Films/>
             </Route>
             <Guardian>
                 <Route path = { `${book.root}/lectrum-react-hw-04${book.secret}` }>

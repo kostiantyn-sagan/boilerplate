@@ -1,14 +1,15 @@
 // Core
 import React from 'react';
+import { useParams } from 'react-router';
 
 // Hooks
-import { usePeopleFetch } from './hooks/usePeopleFetch';
+import { usePeopleFetch } from '../../hooks/usePeopleFetch';
+import { HwLink } from '../../../../view/elements';
 
-// Elements
-import { HwLink } from '../../view/elements';
-
-export const People = () => {
-    const { isFetching, data, error } = usePeopleFetch();
+export const Person = () => {
+    const { value }:any = useParams();
+    // console.log(value);
+    const { isFetching, data, error } = usePeopleFetch(value);
     if (error && error.status === 404) {
         return <p>Not Found!</p>;
     }
@@ -21,7 +22,7 @@ export const People = () => {
         <p>Loading data from api</p>
     );
 
-    const listJSX = !isFetching && data?.length && data.map(({ name }:any, index: number) => {
+    const personInfoJSX = !isFetching && data?.length && data.map(({ name }:any, index: number) => {
         return (
             <HwLink
                 key = { String(index) }
@@ -32,9 +33,9 @@ export const People = () => {
 
     return (
         <>
-            <h1>People</h1>
+            <h1>Person</h1>
             {spinnerJSX}
-            {listJSX}
+            {personInfoJSX}
         </>
     );
 };

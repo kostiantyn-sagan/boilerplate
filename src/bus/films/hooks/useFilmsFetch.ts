@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { peopleActions } from '../actions';
+import { filmsActions } from '../actions';
 
-export const usePeopleFetch = (id?:string) => {
+export const useFilmsFetch = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(peopleActions.fetchAsync(id));
+        dispatch(filmsActions.fetchAsync());
     }, [ dispatch ]);
 
     const {
         data,
         isFetching,
         error,
-    } = useSelector((state:any) => state.people);
+    } = useSelector((state:any) => state.films);
 
     return {
         data,

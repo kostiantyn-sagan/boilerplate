@@ -5,12 +5,15 @@ import { combineReducers } from 'redux';
 import { togglersReducer as togglers } from '../../bus/client';
 import { todosReducer as todos } from '../../bus/todos/reducer';
 import { studentReducer as student } from '../../bus/student/reducer';
-// import { peopleReducer as people } from '../../bus/people/reducer';
+import { peopleReducer as people } from '../../bus/people/reducer';
+import { filmsReducer as films } from '../../bus/films/reducer';
 
 export const rootReducer = combineReducers({
     togglers,
     todos,
     student,
+    people,
+    films,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
