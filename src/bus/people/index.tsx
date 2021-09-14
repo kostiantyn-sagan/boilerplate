@@ -1,40 +1,24 @@
-// Core
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { peopleActions } from './actions';
 
-// Hooks
-import { usePeopleFetch } from './hooks/usePeopleFetch';
+export const usePeopleFetch = (id?:string) => {
+    const dispatch = useDispatch();
 
-// Elements
-import { HwLink } from '../../view/elements';
+    useEffect(() => {
+        dispatch(peopleActions.fetchAsync(id));
+    }, [ dispatch ]);
 
-export const People = () => {
-    const { isFetching, data, error } = usePeopleFetch();
-    if (error && error.status === 404) {
-        return <p>Not Found!</p>;
-    }
+    const {
+        data,
+        isFetching,
+        error,
+    } = useSelector((state:any) => state.people);
 
-    if (error && error.status !== 404) {
-        return <p>Something went wrong</p>;
-    }
-
-    const spinnerJSX = isFetching && (
-        <p>Loading data from api</p>
-    );
-
-    const listJSX = !isFetching && data?.length && data.map(({ name }:any, index: number) => {
-        return (
-            <HwLink
-                key = { String(index) }
-                to = { `/self-education/lectrum-react-hw-07/people/${index + 1}` }>{name}
-            </HwLink>
-        );
-    });
-
-    return (
-        <>
-            <h1>People</h1>
-            {spinnerJSX}
-            {listJSX}
-        </>
-    );
+    return {
+        data,
+        isFetching,
+        error,
+    };
 };
+

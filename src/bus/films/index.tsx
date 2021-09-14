@@ -1,30 +1,23 @@
-import React from 'react';
-import { useFilmsFetch } from './hooks/useFilmsFetch';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filmsActions } from './actions';
 
-export const Films = () => {
-    const { isFetching, data, error } = useFilmsFetch();
+export const useFilmsFetch = (id?:string) => {
+    const dispatch = useDispatch();
 
-    if (error && error.status === 404) {
-        return <p>Not Found!</p>;
-    }
+    useEffect(() => {
+        dispatch(filmsActions.fetchAsync(id));
+    }, [ dispatch ]);
 
-    if (error && error.status !== 404) {
-        return <p>Something went wrong</p>;
-    }
+    const {
+        data,
+        isFetching,
+        error,
+    } = useSelector((state:any) => state.films);
 
-    const spinnerJSX = isFetching && (
-        <p>Loading data from api</p>
-    );
-
-    const listJSX = !isFetching && data && data.length && data.map(({ title }:any, index: number) => {
-        return <li key = { String(index) }>{title}</li>;
-    });
-
-    return (
-        <>
-            <h1>Films</h1>
-            {spinnerJSX}
-            {listJSX}
-        </>
-    );
+    return {
+        data,
+        isFetching,
+        error,
+    };
 };

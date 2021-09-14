@@ -8,3 +8,7 @@ export * from './Article';
 export * from './Accordion';
 export * from './ImageGallery';
 export * from './Guardian';
+export * from './People';
+export * from './Person';
+export * from './Films';
+export * from './Film';

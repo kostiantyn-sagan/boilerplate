@@ -13,8 +13,10 @@ export const api = Object.freeze({
     },
 
     films: {
-        fetch: () => {
-            return fetch(`${root}/films`, {
+        fetch: (id?:string) => {
+            const url = id ? `${root}/films/${id}` : `${root}/films`;
+
+            return fetch(url, {
                 method: 'GET',
             });
         },

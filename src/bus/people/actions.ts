@@ -1,5 +1,5 @@
 // API;
-import { api } from '../../api';
+import { api } from './api';
 
 // Types;
 import { types } from './types';
@@ -34,14 +34,11 @@ export const peopleActions = Object.freeze({
         dispatch(peopleActions.startFetching());
 
         const response = await api.people.fetch(id);
-        console.log(response);
 
         if (response.status === 200) {
-            console.log(id);
             const  results  = await response.json();
-            console.log(results);
+
             const data = id ? results : results.results;
-            console.log(data);
 
 
             dispatch(peopleActions.fill(data));

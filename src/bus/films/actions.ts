@@ -1,5 +1,5 @@
 // API;
-import { api } from '../../api';
+import { api } from '../people/api';
 
 // Types;
 import { types } from './types';
@@ -30,17 +30,16 @@ export const filmsActions = Object.freeze({
         };
     },
 
-    fetchAsync: () => async(dispatch:any) => {
+    fetchAsync: (id?:string) => async(dispatch:any) => {
         dispatch(filmsActions.startFetching());
 
-        const response = await api.films.fetch();
+        const response = await api.films.fetch(id);
 
         if (response.status === 200) {
-            const { results } = await response.json();
-            console.log(results);
+            const  results  = await response.json();
+            const data = id ? results : results.results;
 
-
-            dispatch(filmsActions.fill(results));
+            dispatch(filmsActions.fill(data));
         } else {
             const error = {
                 status: response.status,

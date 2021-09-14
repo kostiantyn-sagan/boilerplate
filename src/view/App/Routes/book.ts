@@ -7,4 +7,5 @@ export const book = Object.freeze({
     people:       '/people',
     person:       '/people/:value',
     films:        '/films',
+    film:         '/films/:value',
 });
