@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`people actions should fetch people 1`] = `[Function]`;
+
+exports[`people actions should fill people 1`] = `
+Object {
+  "payload": Object {
+    "name": "Mars",
+  },
+  "type": "PEOPLE_FILL",
+}
+`;
+
+exports[`people actions should set fetching error 1`] = `
+Object {
+  "error": true,
+  "payload": "We have an error!",
+  "type": "PEOPLE_SET_FETCHING_ERROR",
+}
+`;
+
+exports[`people actions should start fetching 1`] = `
+Object {
+  "type": "PEOPLE_START_FETCHING",
+}
+`;
+
+exports[`people actions should stop fetching 1`] = `
+Object {
+  "type": "PEOPLE_STOP_FETCHING",
+}
+`;
