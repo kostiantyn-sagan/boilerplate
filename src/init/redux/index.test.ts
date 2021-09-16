@@ -4,33 +4,33 @@
 
 // Core
 import { createStore, combineReducers } from 'redux';
-import {  persistReducer } from 'redux-persist';
+import { persistStore,  persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 
 // Reducers
 import { peopleReducer as people } from '../../bus/people/reducer';
+import { studentReducer as student } from '../../bus/student/reducer';
+import { filmsReducer as films } from '../../bus/films/reducer';
 
 // Instruments
 import { store } from './index';
 
-const persistedReducer = persistReducer(
+export const referencePersistedReducer = persistReducer(
     {
         key:       process.env.APP_NAME || 'AwesomeApp',
         storage,
         whitelist: [ 'todos' ],
     },
-    people,
+    combineReducers({ people, student, films }),
 );
 
-export const referenceRootReducer = combineReducers({
-    persistedReducer,
-});
+const referenceStore = createStore(referencePersistedReducer);
 
-const referenceStore = createStore(referenceRootReducer);
+const referencePersistor = persistStore(referenceStore);
 
 describe('redux store', () => {
     test('should have a valid state shape', () => {
-        expect(store.getState()).toStrictEqual(referenceStore.getState());
+        expect(store.getState()).toEqual(referencePersistor.getState());
     });
 });

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`films actions should fetch films 1`] = `[Function]`;
+
+exports[`films actions should fill films 1`] = `
+Object {
+  "payload": Object {
+    "name": "Mars",
+  },
+  "type": "FILMS_FILL",
+}
+`;
+
+exports[`films actions should set fetching error 1`] = `
+Object {
+  "error": true,
+  "payload": "We have an error!",
+  "type": "FILMS_SET_FETCHING_ERROR",
+}
+`;
+
+exports[`films actions should start fetching 1`] = `
+Object {
+  "type": "FILMS_START_FETCHING",
+}
+`;
+
+exports[`films actions should stop fetching 1`] = `
+Object {
+  "type": "FILMS_STOP_FETCHING",
+}
+`;

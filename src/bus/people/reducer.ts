@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer, AnyAction } from 'redux';
 
 // types
 import { types } from './types';
@@ -9,7 +9,7 @@ const initialState = {
     error:      null,
 };
 
-export const peopleReducer: Reducer<any> = (state = initialState, { type, payload }) => {
+export const peopleReducer: Reducer<any> = (state = initialState, { type, payload }:AnyAction) => {
     switch (type) {
         case types.PEOPLE_START_FETCHING:
             return {

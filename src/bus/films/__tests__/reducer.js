@@ -1,12 +1,12 @@
 // Reducer
-import { peopleReducer } from '../reducer';
+import { filmsReducer } from '../reducer';
 
 // Actions
-import { peopleActions } from '../actions';
+import { filmsActions } from '../actions';
 
-describe('people reducer', () => {
+describe('films reducer', () => {
     test('should return initial state by default', () => {
-        expect(peopleReducer(void 0, {})).toMatchInlineSnapshot(`
+        expect(filmsReducer(void 0, {})).toMatchInlineSnapshot(`
 Object {
   "data": null,
   "error": null,
@@ -15,7 +15,7 @@ Object {
 `);
     });
     test('should handle start fetching action', () => {
-        expect(peopleReducer(void 0, peopleActions.startFetching())).toMatchInlineSnapshot(`
+        expect(filmsReducer(void 0, filmsActions.startFetching())).toMatchInlineSnapshot(`
 Object {
   "data": null,
   "error": null,
@@ -24,7 +24,7 @@ Object {
 `);
     });
     test('should handle stop fetching action', () => {
-        expect(peopleReducer(void 0, peopleActions.stopFetching())).toMatchInlineSnapshot(`
+        expect(filmsReducer(void 0, filmsActions.stopFetching())).toMatchInlineSnapshot(`
 Object {
   "data": null,
   "error": null,
@@ -33,7 +33,7 @@ Object {
 `);
     });
     test('should handle fill action', () => {
-        expect(peopleReducer(void 0, peopleActions.fill({ name: 'Mars' }))).toMatchInlineSnapshot(`
+        expect(filmsReducer(void 0, filmsActions.fill({ name: 'Mars' }))).toMatchInlineSnapshot(`
 Object {
   "data": Object {
     "name": "Mars",
@@ -44,7 +44,7 @@ Object {
 `);
     });
     test('should handle set fetching error message', () => {
-        expect(peopleReducer(void 0, peopleActions.setFetchingError('We have an error'))).toMatchInlineSnapshot(`
+        expect(filmsReducer(void 0, filmsActions.setFetchingError('We have an error'))).toMatchInlineSnapshot(`
 Object {
   "data": null,
   "error": "We have an error",
