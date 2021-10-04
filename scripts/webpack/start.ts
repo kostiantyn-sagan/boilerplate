@@ -1,8 +1,7 @@
 // Core
 import webpack from 'webpack';
 import DevServer from 'webpack-dev-server';
-import hot from 'webpack-hot-middleware';
-import chalk from 'chalk'; // Console Coloring ;
+import chalk from 'chalk';
 import openBrowser from 'react-dev-utils/openBrowser';
 import { choosePort } from 'react-dev-utils/WebpackDevServerUtils';
 
@@ -19,41 +18,27 @@ const compiler = webpack(getDevConfig());
         const choosenPort = await choosePort(HOST, PORT);
 
         if (!choosenPort) {
-            console.log(
-                chalk.yellowBright('→ It\'s impossible to run the app :('),
-            );
+            console.log(chalk.yellowBright('→ It\'s impossible to run the app :('));
 
             return null;
         }
 
-        const server = new DevServer(compiler, {
-            // memory-fs
-            host:               HOST,
-            port:               choosenPort,
-            historyApiFallback: true,
-            overlay:            true,
-            quiet:              true,
-            clientLogLevel:     'none',
-            noInfo:             true,
-            after:              (app) => {
-                app.use(
-                    hot(compiler, {
-                        log: false,
-                    }),
-                );
+        const server = new DevServer(
+            {
+                host:               HOST,
+                port:               choosenPort,
+                historyApiFallback: true,
+                hot:                false,
+                onListening:        () => {
+                    openBrowser(`http://${HOST}:${choosenPort}`);
+                },
             },
-        });
+            compiler,
+        );
 
-        server.listen(choosenPort, HOST, () => {
-            console.log(
-                `${chalk.greenBright(
-                    '→ Server listening on',
-                )} ${chalk.blueBright(`http://${HOST}:${choosenPort}`)}`,
-            );
-            openBrowser(`http://${HOST}:${choosenPort}`);
-        });
+        server.start();
     } catch (error) {
         console.log(chalk.redBright('→ Error!'));
-        console.error(error.message || error);
+        console.error(error ?? 'No error data.');
     }
 })();

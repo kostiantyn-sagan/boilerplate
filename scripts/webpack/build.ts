@@ -16,7 +16,7 @@ const compiler = webpack(getProdConfig());
 
 compiler.run((error, stats) => {
     if (error) {
-        // ошибка конфигурации
+    // ошибка конфигурации
         console.error(error.stack || error);
 
         if (error.message) {
@@ -26,7 +26,7 @@ compiler.run((error, stats) => {
         return null;
     }
 
-    const info = stats.toString({
+    const info = stats?.toString({
         colors:     true,
         hash:       true,
         version:    true,
@@ -43,14 +43,14 @@ compiler.run((error, stats) => {
     console.log(chalk.greenBright('✓ Build completed'));
     console.log(info);
 
-    if (stats.hasErrors()) {
-        // ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
+    if (stats?.hasErrors()) {
+    // ошибка во время компиляции (битый импорт, ошибка синтаксиса, etc)
         console.log(chalk.redBright('→ Error!'));
         console.error(info);
     }
 
-    if (stats.hasWarnings()) {
-        // ворнинг во время компиляции
+    if (stats?.hasWarnings()) {
+    // ворнинг во время компиляции
         console.log(chalk.yellowBright('→ Warning!'));
         console.warn(info);
     }

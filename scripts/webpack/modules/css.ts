@@ -5,8 +5,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const loadCss = ({ sourceMap }: { sourceMap: boolean }) => ({
     loader:  'css-loader',
     options: {
-        // modules: false,
-        // localIdentName: '[path][name]__[local]--[hash:base64:5]',
         sourceMap,
     },
 });
@@ -16,10 +14,7 @@ export const loadDevCss = (): Configuration => ({
         rules: [
             {
                 test: /\.css$/,
-                use:  [
-                    'style-loader',
-                    loadCss({ sourceMap: true }),
-                ],
+                use:  [ 'style-loader', loadCss({ sourceMap: true }) ],
             },
         ],
     },
@@ -30,10 +25,7 @@ export const loadProdCss = (): Configuration => ({
         rules: [
             {
                 test: /\.css$/,
-                use:  [
-                    MiniCssExtractPlugin.loader,
-                    loadCss({ sourceMap: false }),
-                ],
+                use:  [ MiniCssExtractPlugin.loader, loadCss({ sourceMap: false }) ],
             },
         ],
     },

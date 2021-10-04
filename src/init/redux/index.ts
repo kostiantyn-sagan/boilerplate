@@ -1,32 +1,31 @@
 // Core
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { configureStore } from '@reduxjs/toolkit';
 
-// Middlewares
-import { middlewares, sagaMiddleware } from './middlewares';
+// Reducers
+import togglers from '../../bus/client/togglers';
+import errors from '../../bus/client/errors';
+import messages from '../../bus/messages/slice';
+import days from '../../bus/days/slice';
+import filters from '../../bus/client/filters/slice';
 
-// Instruments
-import { rootReducer } from './rootReducer';
+// Middleware
+import { middleware, sagaMiddleware } from './middleware';
+
+// Sagas
 import { rootSaga } from './rootSaga';
 
-const persistedReducer = persistReducer(
-    {
-        key:       process.env.APP_NAME || 'AwesomeApp',
-        storage,
-        whitelist: [ 'todos' ],
+export const store = configureStore({
+    reducer: {
+        togglers,
+        errors,
+        messages,
+        days,
+        filters,
     },
-    rootReducer,
-);
+    middleware,
+    devTools: process.env.NODE_ENV !== 'production',
+});
 
-const store = createStore(
-    persistedReducer,
-    composeWithDevTools(applyMiddleware(...middlewares)),
-);
-
-const persistor = persistStore(store);
-
-export { store, persistor };
+export type RootState = ReturnType<typeof store.getState>
 
 sagaMiddleware.run(rootSaga);
