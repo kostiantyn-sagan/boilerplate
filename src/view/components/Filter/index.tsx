@@ -1,5 +1,5 @@
 // Core
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 // Redux
 import { useFilter } from '../../../bus/client/filters';
@@ -14,9 +14,13 @@ import * as S from './styles';
 import * as T from './types';
 import { DayType } from '../../../bus/days/types';
 
-export const Filter = () => {
-    const { filterData, setFilterData, resetFilterState } = useFilter();
+type PropTypes = ReturnType<typeof useFilter>
 
+export const Filter: FC<PropTypes> = ({
+    filterData,
+    setFilterData,
+    resetFilterState,
+}) => {
     const [ filterForm, filterFormHandleChange, , resetFilterForm ]
     = useForm<T.TemperatureInitialState>(T.temperatureInitialState);
 

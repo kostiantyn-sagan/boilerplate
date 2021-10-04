@@ -22,7 +22,7 @@ import { Main } from './styles';
 
 const WeatherWidget = () => {
     const { days, isDaysFetching } = useDays();
-    const { currentDay } = useFilter();
+    const filter = useFilter();
 
     if (isDaysFetching) {
         return <Spinner />;
@@ -30,15 +30,17 @@ const WeatherWidget = () => {
 
     return (
         <Main>
-            <Filter />
+            <Filter
+                { ...filter }
+            />
             {days.length === 0 ? (
                 <FallbackMessage>
                     По заданным критериям нет доступных дней!
                 </FallbackMessage>
             ) : (
                 <section>
-                    <Head currentDay = { currentDay } />
-                    <CurrentDay currentDay = { currentDay } />
+                    <Head currentDay = { filter.currentDay } />
+                    <CurrentDay currentDay = { filter.currentDay } />
                     <Forecast days = { days } />
                 </section>
             )}

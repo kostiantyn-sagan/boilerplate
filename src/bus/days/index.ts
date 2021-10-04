@@ -9,10 +9,13 @@ import { useTogglersRedux } from '../client/togglers';
 import { useSelector } from '../../tools/hooks';
 
 // Api
-import * as API from './api';
+// import * as API from './api';
+
+// Saga actions
+import { fetchDaysActionAsync } from './saga/actions';
 
 // Actions
-import { daysActions } from './slice';
+// import { daysActions } from './slice';
 import { filterActions } from '../client/filters/slice';
 
 // Hooks
@@ -21,32 +24,32 @@ export const useDays = () => {
 
     const {
         togglersRedux: { isDaysFetching },
-        setTogglerAction,
     } = useTogglersRedux();
 
     const { days, filters } = useSelector((state) => state);
 
-    const fetchDaysAsync = async () => {
-        setTogglerAction({
-            type:  'isDaysFetching',
-            value: true,
-        });
+    // const fetchDaysAsync = async () => {
+    //     setTogglerAction({
+    //         type:  'isDaysFetching',
+    //         value: true,
+    //     });
 
-        const result = await API.fetchDays();
+    //     const result = await API.fetchDays();
 
-        if (result !== null) {
-            dispatch(daysActions.setDays(result));
-            dispatch(filterActions.setCurrentDay(result[ 0 ]));
-        }
+    //     if (result !== null) {
+    //         dispatch(daysActions.setDays(result));
+    //         dispatch(filterActions.setCurrentDay(result[ 0 ]));
+    //     }
 
-        setTogglerAction({
-            type:  'isDaysFetching',
-            value: false,
-        });
-    };
+    //     setTogglerAction({
+    //         type:  'isDaysFetching',
+    //         value: false,
+    //     });
+    // };
 
     useEffect(() => {
-        fetchDaysAsync();
+        dispatch(fetchDaysActionAsync());
+        // fetchDaysAsync();
     }, []);
 
     const ifCurrentDayExistInFilteredDaysHandler = (
