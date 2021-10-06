@@ -1,12 +1,9 @@
 // Core
 import React, { FC } from 'react';
-import { ButtonGroup, Button, Box } from '@mui/material';
-
-// Styles
-import * as S from './styles';
+import { Button, Box } from '@mui/material';
 
 // Types
-import { Options, onLeaveFeedbackContract } from '../../pages/Feedback';
+import { Options, onLeaveFeedbackContract } from '../../pages/Feedback/types';
 
 type PropTypes = {
     options: Options;
@@ -25,7 +22,10 @@ const selectOptionColor = (option: string) => {
     return 'error';
 };
 
-export const FeedbackOptions: FC<PropTypes> = ({ options, onLeaveFeedback }) => (
+export const FeedbackOptions: FC<PropTypes> = ({
+    options,
+    onLeaveFeedback,
+}) => (
     <Box>
         {options.map((option) => (
             <Button
@@ -34,9 +34,9 @@ export const FeedbackOptions: FC<PropTypes> = ({ options, onLeaveFeedback }) => 
                 size = 'large'
                 sx = {{ marginRight: '16px' }}
                 variant = 'contained'
-                onClick = { () => onLeaveFeedback(option) }>{option}
+                onClick = { () => onLeaveFeedback(option) }>
+                {option}
             </Button>
         ))}
     </Box>
 );
-
