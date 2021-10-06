@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 // Pages
-import { WeatherWidget } from '../pages';
+import { Feedback } from '../pages';
 
 // Book
 import * as book from './book';
@@ -29,7 +29,7 @@ export const Private: FC = () => {
             <Route
                 exact
                 path = { book.ROOT }>
-                <WeatherWidget/>
+                <Feedback/>
             </Route>
             <Redirect to = { book.ROOT } />
         </Switch>

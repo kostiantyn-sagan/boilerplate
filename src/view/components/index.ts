@@ -5,3 +5,5 @@ export * from './Head';
 export * from './CurrentDay';
 export * from './Forecast';
 export * from './Day';
+export * from './FeedbackOptions';
+export * from './Statistics';
